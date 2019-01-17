@@ -9,7 +9,7 @@ def call(jenkinsNodes){
     {
         for (Node node in jenkinsNodes) 
         {
-            sleep(timesleep)
+            sleep(10)
             // Make sure slave is online
             if (!node.getComputer().isOffline()) 
             {           
@@ -28,7 +28,7 @@ def call(jenkinsNodes){
                 println "'$node.nodeName' is offline !!!" 
             }
         }
-        sleep(timesleep)
+        sleep(10)
         return 0
     }
 }
