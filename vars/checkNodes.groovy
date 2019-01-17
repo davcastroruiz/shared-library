@@ -5,7 +5,7 @@ import jenkins.model.Jenkins
 import groovy.time.*
 
 
-def node_status(){
+def status(){
     Jenkins jenkins = Jenkins.instance
     def jenkinsNodes =jenkins.nodes
     while(1)
