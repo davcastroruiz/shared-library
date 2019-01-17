@@ -5,33 +5,30 @@ import jenkins.model.Jenkins
 import groovy.time.*
 
 
+Jenkins jenkins = Jenkins.instance
+def jenkinsNodes =jenkins.nodes
+    
 def call(){
-    Jenkins jenkins = Jenkins.instance
-    def jenkinsNodes =jenkins.nodes
-    def results = ''
     while(1)
     {
-        for (Node node in jenkinsNodes) 
+        for (Node x in jenkinsNodes)
         {
-            echo "Node checking:"
             sleep(1)
-            echo "${node}"
             // Make sure slave is online
-            if (!node.getComputer().isOffline()) 
-            {           
-                //Make sure that the slave busy executor number is 0.
-                if(node.getComputer().countBusy()==0)
+            if (!x.getComputer().isOffline())
+            {
+                if(x.getComputer().countBusy()==0)
                 {
-                    echo "'$node.nodeName' can take jobs !!!"
+                    println "'$x.nodeName' can take jobs !!!"
                 }
                 else
                 {
-                    echo "'$node.nodeName' is busy !!!"
+                    println "$x.nodeName' is busy !!!"
                 }
             }
             else
             {
-                echo "'$node.nodeName' is offline !!!" 
+                println "'$x.nodeName' is offline !!!" 
             }
         }
         sleep(1)
