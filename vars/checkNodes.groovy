@@ -5,10 +5,9 @@ import jenkins.model.Jenkins
 import groovy.time.*
 
 
-Jenkins jenkins = Jenkins.instance
-def jenkinsNodes =jenkins.nodes
-    
 def call(){
+    Jenkins jenkins = Jenkins.instance
+    def jenkinsNodes = jenkins.nodes
     while(1)
     {
         for (Node x in jenkinsNodes)
