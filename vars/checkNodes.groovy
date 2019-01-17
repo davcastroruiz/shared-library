@@ -8,5 +8,8 @@ import groovy.time.*
 def call(jenkinsNodes){
     println jenkinsNodes
     println "can take jobs !!!"
-    
+    for (Node node in jenkinsNodes) 
+        {
+            println node.nodeName
+        }
 }
