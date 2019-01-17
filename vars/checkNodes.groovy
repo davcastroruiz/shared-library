@@ -11,5 +11,6 @@ def call(jenkinsNodes){
     for (Node node in jenkinsNodes) 
         {
             println node.nodeName
+            println node.getComputer().isOffline()
         }
 }
