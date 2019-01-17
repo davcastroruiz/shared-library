@@ -29,3 +29,4 @@ def call(int buildNumber) {
   }else{
     echo "The build number is odd"
   }
+}
