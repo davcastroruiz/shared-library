@@ -26,6 +26,6 @@
 def call(int buildNumber) {
   if (buildNumber % 2 == 0) {
     echo "The build number is even"
-  else{
+  }else{
     echo "The build number is odd"
   }
