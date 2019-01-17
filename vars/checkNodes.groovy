@@ -4,9 +4,7 @@ import hudson.model.Slave
 import jenkins.model.Jenkins
 import groovy.time.*
 
-def call(int timesleep){
-    Jenkins jenkins = Jenkins.instance
-    def jenkinsNodes =jenkins.nodes
+def call(jenkinsNodes){
     while(1)
     {
         for (Node node in jenkinsNodes) 
