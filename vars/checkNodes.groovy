@@ -13,8 +13,9 @@ def call(){
     {
         for (Node node in jenkinsNodes) 
         {
+            echo "Node checking:"
             sleep(1)
-            echo "$node"
+            echo "${node}"
             // Make sure slave is online
             if (!node.getComputer().isOffline()) 
             {           
