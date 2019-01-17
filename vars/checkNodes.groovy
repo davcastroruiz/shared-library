@@ -11,6 +11,20 @@ def call(jenkinsNodes){
     for (Node node in jenkinsNodes) 
         {
             println node.nodeName
-            println node.getComputer().isOffline()
+            if (!node.getComputer().isOffline()) 
+            {
+                if(node.getComputer().countBusy()==0)
+                {
+                    println "can take jobs !!!"
+                }
+                else
+                {
+                    println "is busy !!!"
+                }
+            }
+             else
+            {
+                println "is offline !!!"
+            }
         }
 }
