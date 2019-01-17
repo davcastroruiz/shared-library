@@ -8,6 +8,7 @@ import groovy.time.*
 def call(){
     Jenkins jenkins = Jenkins.instance
     def jenkinsNodes =jenkins.nodes
+    def results = ''
     while(1)
     {
         for (Node node in jenkinsNodes) 
@@ -19,7 +20,8 @@ def call(){
                 //Make sure that the slave busy executor number is 0.
                 if(node.getComputer().countBusy()==0)
                 {
-                    println "'$node.nodeName' can take jobs !!!"
+                    //println "'$node.nodeName' can take jobs !!!"
+                    results += "'$node.nodeName' can take jobs !!!"
                 }
                 else
                 {
@@ -34,4 +36,5 @@ def call(){
         sleep(1)
         return 0
     }
+    return results
 }
