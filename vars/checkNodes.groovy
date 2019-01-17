@@ -6,7 +6,7 @@ import groovy.time.*
 
 
 def call(jenkinsNodes){
-    for (Node node in ${jenkinsNodes})
+    for (Node node in jenkinsNodes)
         {
             if (!node.getComputer().isOffline()) 
             {
