@@ -1,22 +1,36 @@
-import hudson.FilePath
-import hudson.model.Node
-import hudson.model.Slave
-import jenkins.model.Jenkins
-import groovy.time.*
+def call(int timesleep){
+    import hudson.FilePath
+    import hudson.model.Node
+    import hudson.model.Slave
+    import jenkins.model.Jenkins
+    import groovy.time.*
 
-
-def call(){
     Jenkins jenkins = Jenkins.instance
-    def jenkinsNodes = jenkins.nodes
+    def jenkinsNodes =jenkins.nodes
     while(1)
     {
-        for (Node x in jenkinsNodes)
+        for (Node node in jenkinsNodes) 
         {
-            sleep(1)
+            sleep(timesleep)
             // Make sure slave is online
-            println "some node can take jobs !!!"
+            if (!node.getComputer().isOffline()) 
+            {           
+                //Make sure that the slave busy executor number is 0.
+                if(node.getComputer().countBusy()==0)
+                {
+                    println "'$node.nodeName' can take jobs !!!"
+                }
+                else
+                {
+                    println "$node.nodeName' is busy !!!"
+                }
+            }
+            else
+            {
+                println "'$node.nodeName' is offline !!!" 
+            }
         }
-        sleep(1)
+        sleep(timesleep)
         return 0
     }
 }
