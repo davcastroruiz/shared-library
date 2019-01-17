@@ -1,10 +1,10 @@
-def call(int timesleep){
-    import hudson.FilePath
-    import hudson.model.Node
-    import hudson.model.Slave
-    import jenkins.model.Jenkins
-    import groovy.time.*
+import hudson.FilePath
+import hudson.model.Node
+import hudson.model.Slave
+import jenkins.model.Jenkins
+import groovy.time.*
 
+def call(int timesleep){
     Jenkins jenkins = Jenkins.instance
     def jenkinsNodes =jenkins.nodes
     while(1)
