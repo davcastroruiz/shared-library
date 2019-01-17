@@ -6,11 +6,8 @@ import groovy.time.*
 
 @NonCPS
 def call(jenkinsNodes){
-    println jenkinsNodes
-    println "can take jobs !!!"
     for (Node node in jenkinsNodes) 
         {
-            println node.nodeName
             if (!node.getComputer().isOffline()) 
             {
                 if(node.getComputer().countBusy()==0)
@@ -19,12 +16,12 @@ def call(jenkinsNodes){
                 }
                 else
                 {
-                    println "is busy !!!"
+                    println "'$node.nodeName' is busy !!!"
                 }
             }
              else
             {
-                println "is offline !!!"
+                println "'$node.nodeName' is offline !!!"
             }
         }
 }
