@@ -6,7 +6,7 @@ import groovy.time.*
 
 @NonCPS
 def call(jenkinsNodes){
-    
+    println jenkinsNodes
     println "can take jobs !!!"
     
 }
