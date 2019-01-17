@@ -4,9 +4,9 @@ import hudson.model.Slave
 import jenkins.model.Jenkins
 import groovy.time.*
 
-@NonCPS
+
 def call(jenkinsNodes){
-    for (Node node in jenkinsNodes) 
+    for (Node node in ${jenkinsNodes})
         {
             if (!node.getComputer().isOffline()) 
             {
