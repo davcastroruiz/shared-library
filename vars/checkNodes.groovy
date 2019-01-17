@@ -15,7 +15,7 @@ def call(jenkinsNodes){
             {
                 if(node.getComputer().countBusy()==0)
                 {
-                    println "can take jobs !!!"
+                    println "'$node.nodeName' can take jobs !!!"
                 }
                 else
                 {
