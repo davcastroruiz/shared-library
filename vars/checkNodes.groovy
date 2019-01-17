@@ -14,28 +14,26 @@ def call(){
         for (Node node in jenkinsNodes) 
         {
             sleep(1)
-            println "'$node.nodeName' can take jobs !!!"
+            echo "$node"
             // Make sure slave is online
             if (!node.getComputer().isOffline()) 
             {           
                 //Make sure that the slave busy executor number is 0.
                 if(node.getComputer().countBusy()==0)
                 {
-                    //println "'$node.nodeName' can take jobs !!!"
-                    results += "'$node.nodeName' can take jobs !!!"
+                    echo "'$node.nodeName' can take jobs !!!"
                 }
                 else
                 {
-                    println "$node.nodeName' is busy !!!"
+                    echo "'$node.nodeName' is busy !!!"
                 }
             }
             else
             {
-                println "'$node.nodeName' is offline !!!" 
+                echo "'$node.nodeName' is offline !!!" 
             }
         }
         sleep(1)
         return 0
     }
-    return results
 }
