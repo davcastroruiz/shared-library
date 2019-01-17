@@ -4,6 +4,7 @@ import hudson.model.Slave
 import jenkins.model.Jenkins
 import groovy.time.*
 
+@NonCPS
 def call(jenkinsNodes){
     while(1)
     {
