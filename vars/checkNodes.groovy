@@ -15,21 +15,7 @@ def call(){
         {
             sleep(1)
             // Make sure slave is online
-            if (!x.getComputer().isOffline())
-            {
-                if(x.getComputer().countBusy()==0)
-                {
-                    println "'$x.nodeName' can take jobs !!!"
-                }
-                else
-                {
-                    println "$x.nodeName' is busy !!!"
-                }
-            }
-            else
-            {
-                println "'$x.nodeName' is offline !!!" 
-            }
+            println "some node can take jobs !!!"
         }
         sleep(1)
         return 0
