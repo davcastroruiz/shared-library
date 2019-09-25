@@ -1,9 +1,18 @@
 pipeline {
   agent any
   stages {
-    stage('') {
-      steps {
-        bat(script: 'ipconfig', returnStatus: true, returnStdout: true)
+    stage('ipconfig') {
+      parallel {
+        stage('ipconfig') {
+          steps {
+            bat(script: 'ipconfig', returnStatus: true, returnStdout: true)
+          }
+        }
+        stage('dir') {
+          steps {
+            bat(script: 'dir', returnStatus: true, returnStdout: true)
+          }
+        }
       }
     }
   }
