@@ -1,18 +1,24 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'Windows'
+    }
+
+  }
   stages {
-    stage('ipconfig') {
-      parallel {
-        stage('ipconfig') {
-          steps {
-            bat(script: 'ipconfig', returnStatus: true, returnStdout: true)
-          }
-        }
-        stage('dir') {
-          steps {
-            bat(script: 'dir', returnStatus: true, returnStdout: true)
-          }
-        }
+    stage('Stage Shell Script') {
+      steps {
+        sh 'ipconfig'
+      }
+    }
+    stage('Stage Print') {
+      steps {
+        echo '"ipconfig".execute().text'
+      }
+    }
+    stage('') {
+      steps {
+        powershell(script: 'Get-ComputerInfo', returnStdout: true)
       }
     }
   }
