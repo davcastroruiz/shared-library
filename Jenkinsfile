@@ -4,7 +4,7 @@ pipeline {
     stage('Stage Print') {
       steps {
         echo '"ipconfig".execute().text'
-        sh 'pip install python-pptx'
+        bat(script: 'pip install python-pptx', returnStdout: true)
       }
     }
   }
