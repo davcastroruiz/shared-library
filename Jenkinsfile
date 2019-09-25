@@ -6,17 +6,12 @@ pipeline {
 
   }
   stages {
-    stage('Stage Shell Script') {
-      steps {
-        sh 'ipconfig'
-      }
-    }
     stage('Stage Print') {
       steps {
         echo '"ipconfig".execute().text'
       }
     }
-    stage('') {
+    stage('error') {
       steps {
         powershell(script: 'Get-ComputerInfo', returnStdout: true)
       }
