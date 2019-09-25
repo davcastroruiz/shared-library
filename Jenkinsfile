@@ -1,19 +1,10 @@
 pipeline {
-  agent {
-    node {
-      label 'Windows'
-    }
-
-  }
+  agent any
   stages {
     stage('Stage Print') {
       steps {
         echo '"ipconfig".execute().text'
-      }
-    }
-    stage('error') {
-      steps {
-        powershell(script: 'Get-ComputerInfo', returnStdout: true)
+        sh 'pip install python-pptx'
       }
     }
   }
