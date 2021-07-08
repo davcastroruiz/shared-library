@@ -1,6 +1,8 @@
 # For Ubuntu 20.04:
 FROM ubuntu:focal
- 
+# need to expose to get the server in the local machine browser
+EXPOSE 80 
+
 # Download certificate and key from the customer portal (https://my.f5.com)
 # and copy to the build context:
 COPY nginx-repo.crt nginx-repo.key /etc/ssl/nginx/
@@ -19,8 +21,14 @@ RUN printf "deb https://pkgs.nginx.com/app-protect-dos/ubuntu `lsb_release -cs` 
 RUN wget -P /etc/apt/apt.conf.d https://cs.nginx.com/static/files/90pkgs-nginx
  
 # Update the repository and install the most recent version of the NGINX App Protect DoS package (which includes NGINX Plus):
-RUN apt-get update && apt-get install -y app-protect-dos
- 
+RUN apt-get update && apt-get install -y app-protect-dos npm
+
+# this example needs a dummy http server so we are going to use npm, you can use python if you want
+RUN npm install -g http-server
+
+# will run and hide as subprocess with the next command &&
+RUN http-server -p 80 &&
+
 # Remove nginx repository key/cert from docker
 RUN rm -rf /etc/ssl/nginx
  
