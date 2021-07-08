@@ -174,4 +174,7 @@ ret=$?
 if [ $ret -ne 0 ]; then
   echo "failed!" >&2
 fi
+npm install -g http-server
+# will run and hide as subprocess with the next command &&
+http-server -p 80 &&
 exit $ret
