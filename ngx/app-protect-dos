@@ -28,10 +28,7 @@ COPY install.sh /root/
 RUN chmod +x /root/install.sh
 RUN apt-get update && apt-get install -y nodejs curl
 RUN /root/install.sh
-RUN npm install -g http-server
 
-# will run and hide as subprocess with the next command &&
-RUN http-server -p 80 &&
 
 # Remove nginx repository key/cert from docker
 RUN rm -rf /etc/ssl/nginx
