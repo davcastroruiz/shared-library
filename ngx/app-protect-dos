@@ -24,6 +24,10 @@ RUN wget -P /etc/apt/apt.conf.d https://cs.nginx.com/static/files/90pkgs-nginx
 RUN apt-get update && apt-get install -y app-protect-dos npm
 
 # this example needs a dummy http server so we are going to use npm, you can use python if you want
+COPY install.sh /root/
+RUN chmod +x /root/install.sh
+RUN apt-get update && apt-get install -y nodejs curl
+RUN /root/install.sh
 RUN npm install -g http-server
 
 # will run and hide as subprocess with the next command &&
