@@ -21,7 +21,7 @@ RUN printf "deb https://pkgs.nginx.com/app-protect-dos/ubuntu `lsb_release -cs` 
 RUN wget -P /etc/apt/apt.conf.d https://cs.nginx.com/static/files/90pkgs-nginx
  
 # Update the repository and install the most recent version of the NGINX App Protect DoS package (which includes NGINX Plus):
-RUN apt-get update && apt-get install -y app-protect-dos npm
+RUN apt-get update && apt-get install -y app-protect-dos
 
 # this example needs a dummy http server so we are going to use npm, you can use python if you want
 COPY install.sh /root/
