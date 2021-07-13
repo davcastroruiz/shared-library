@@ -1,3 +1,4 @@
+# RENAME THIS FILE TO Dockerfile
 # For Ubuntu 20.04:
 FROM ubuntu:focal
 # need to expose to get the server in the local machine browser
@@ -28,8 +29,6 @@ COPY install.sh /root/
 RUN chmod +x /root/install.sh
 RUN apt-get update && apt-get install -y nodejs curl
 RUN /root/install.sh
-# will run and hide as subprocess with the next command &&
-RUN nohup bash -c "http-server -p 80 &" && sleep 4
 
 # Remove nginx repository key/cert from docker
 RUN rm -rf /etc/ssl/nginx
@@ -37,5 +36,6 @@ RUN rm -rf /etc/ssl/nginx
 # Copy configuration files:
 COPY nginx.conf /etc/nginx/
 COPY entrypoint.sh /root/
+RUN chmod +x /root/entrypoint.sh
  
 CMD /root/entrypoint.sh && tail -f /dev/null
